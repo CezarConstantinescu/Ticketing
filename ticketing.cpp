@@ -58,6 +58,97 @@ public:
 
 		ticketsSold++;
 	}
+    	~Ticket()
+	{
+		if (this->guestName != nullptr)
+		{
+			delete[] this->guestName;
+		}
+
+		if (this->seatNumbers != nullptr)
+		{
+			delete[] this->seatNumbers;
+		}
+
+		ticketsSold--;
+	}
+
+	Ticket(const Ticket& c)
+		:id(c.id)
+	{
+		this->ticketPrice = c.ticketPrice;
+
+		this->guestName = new char[strlen(c.guestName) + 1];
+		strcpy(this->guestName, c.guestName);
+
+		this->eventName = c.eventName;
+
+		this->numberOfSeats = c.numberOfSeats;
+
+		this->seatNumbers = new int[c.numberOfSeats];
+		for (int i = 0; i < c.numberOfSeats; i++)
+		{
+			this->seatNumbers[i] = c.seatNumbers[i];
+		}
+
+		ticketsSold++;
+	}
+
+    static int getobiecteActive() { return ticketsSold; }
+
+	const int getid() { return this->id; }
+	char* getnumeStapan() { return this->guestName; }
+	int getnumarMembre() { return this->ticketPrice; }
+	int* getdataVaccin() { return this->seatNumbers; }
+
+	void setnumarMembre(int ticketPrice)
+	{
+		if (ticketPrice > 0)
+		{
+			this->ticketPrice = ticketPrice;
+		}
+		else
+		{
+			cout << "Input invalid";
+		}
+	}
+
+	void setnumeStapan(const char* guestName)
+	{
+		if (guestName != nullptr)
+		{
+			if (this->guestName != nullptr)
+			{
+				delete[] this->guestName;
+			}
+			this->guestName = new char[strlen(guestName) + 1];
+			strcpy(this->guestName, guestName);
+		}
+		else
+		{
+			cout << "input invalid";
+		}
+	}
+
+	void setdataVaccin(int numberOfSeats, int* seatNumbers)
+	{
+		if (numberOfSeats > 0 && seatNumbers != nullptr)
+		{
+			this->numberOfSeats = numberOfSeats;
+
+			if (this->seatNumbers != nullptr)
+			{
+				delete[] this->seatNumbers;
+			}
+
+			this->seatNumbers = new int[numberOfSeats];
+			for (int i = 0; i < numberOfSeats; i++)
+			{
+				this->seatNumbers[i] = seatNumbers[i];
+			}
+		}
+	}
+
 };
 
 int Ticket::ticketsSold = 0; 
