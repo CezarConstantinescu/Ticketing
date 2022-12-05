@@ -297,7 +297,7 @@ int main()
 	std::cout << c2.getid();
 
 	cout << endl << endl;
-	cout << "Obiecte active: " << Ticket::getticketsSold();
+	cout << "Total bilete vandute: " << Ticket::getticketsSold();
 
 	cin >> c;
 	cout << c;
