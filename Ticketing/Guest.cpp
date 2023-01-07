@@ -14,7 +14,7 @@ Guest::Guest()
 	*seatNumbers = 0;
 }
 
-Guest::Guest(char* guestName,
+Guest::Guest(const char* guestName,
 	int groupSize,
 	int* seatNumbers)
 	:guestName(nullptr), groupSize(0), seatNumbers(nullptr)
@@ -55,5 +55,49 @@ Guest::Guest(const Guest& c)
 	for (int i = 0; i < c.groupSize; i++)
 	{
 		this->seatNumbers[i] = c.seatNumbers[i];
+	}
+}
+
+char* Guest::getguestName() { return this->guestName; }
+int Guest::getgroupSize() { return this->groupSize; }
+int* Guest::getseatNumbers() { return this->seatNumbers; }
+
+void Guest::setguestName(const char* guestName)
+{
+	if (guestName != nullptr)
+	{
+		if (this->guestName != nullptr)
+		{
+			delete[] this->guestName;
+		}
+		this->guestName = new char[strlen(guestName) + 1];
+		strcpy(this->guestName, guestName);
+	}
+	else
+	{
+		cout << "\nInput invalid" << endl << endl;
+	}
+}
+
+void Guest::setseatNumbers(int groupSize, int* seatNumbers)
+{
+	if (groupSize > 0 && seatNumbers != nullptr)
+	{
+		this->groupSize = groupSize;
+
+		if (this->seatNumbers != nullptr)
+		{
+			delete[] this->seatNumbers;
+		}
+
+		this->seatNumbers = new int[groupSize];
+		for (int i = 0; i < groupSize; i++)
+		{
+			this->seatNumbers[i] = seatNumbers[i];
+		}
+	}
+	else
+	{
+		cout << "\nInput invalid" << endl << endl;
 	}
 }

@@ -159,7 +159,7 @@ void Ticket::setticketPrice(int ticketPrice)
 	}
 	else
 	{
-		cout << "Input invalid";
+		cout << "\nInput invalid" << endl << endl;
 	}
 }
 
@@ -176,7 +176,7 @@ void Ticket::setguestName(const char* guestName)
 	}
 	else
 	{
-		cout << "Input invalid";
+		cout << "\nInput invalid" << endl << endl;
 	}
 }
 
@@ -197,6 +197,10 @@ void Ticket::setseatNumbers(int numberOfSeats, int* seatNumbers)
 			this->seatNumbers[i] = seatNumbers[i];
 		}
 	}
+	else
+	{
+		cout << "\nInput invalid" << endl << endl;
+	}
 }
 
 ostream& operator<<(ostream& out, const Ticket& c)
@@ -211,7 +215,7 @@ ostream& operator<<(ostream& out, const Ticket& c)
 	{
 		out << c.seatNumbers[i] << " ";
 	}
-
+	out << endl;
 	return out;
 }
 

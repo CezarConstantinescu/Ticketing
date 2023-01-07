@@ -11,11 +11,16 @@ private:
 	int* seatNumbers;
 public:
 	Guest();
-	Guest(char* guestName,
+	Guest(const char* guestName,
 		int groupSize,
 		int* seatNumbers);
 	~Guest();
 	Guest(const Guest& c);
+	char* getguestName();
+	int getgroupSize();
+	int* getseatNumbers();
+	void setguestName(const char* guestName);
+	void setseatNumbers(int groupSize, int* seatNumbers);
 };
 
 #endif

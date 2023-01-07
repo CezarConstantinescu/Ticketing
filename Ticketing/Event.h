@@ -10,12 +10,21 @@ private:
 	int venueRows;
 	std::string eventName;
 public:
+enum class Zone {
+      VIP,
+      LAWN,
+      TRIBUNE,
+	  BOXES
+    };
+	Zone zone;
 	Event();
 	Event(int venueSeats,
 		int venueRows,
-		std::string eventName);
+		std::string eventName,
+		Zone zone);
 	~Event();
 	Event(const Event& c);
+	std::string getZone();
 };
 
 #endif
