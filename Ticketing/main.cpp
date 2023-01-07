@@ -1,6 +1,6 @@
-
 #include "Ticket.h"
-
+#include "Guest.h"
+#include "Event.h"
 int Ticket::ticketsSold = 0;
 
 int main()
