@@ -1,6 +1,8 @@
 #ifndef TICKET_H
 #define TICKET_H
 #include <iostream>
+#include "Event.h"
+#include "Guest.h"
 using namespace std;
 
 class Ticket {
@@ -8,7 +10,7 @@ class Ticket {
 	static int ticketsSold;
 
 private:
-	const int id;
+	int id;
 	int ticketPrice;
 	char* guestName;
 	std::string eventName;
@@ -17,12 +19,15 @@ private:
 
 public:
 	Ticket();
-	Ticket(const int id,
+	Ticket(int id,
 		int ticketPrice,
 		const char* guestName,
 		string eventName,
 		int numberOfSeats,
 		int* seatNumbers);
+	Event e;
+	Guest g;
+	Ticket(Event e , Guest g);
 	~Ticket();
 	Ticket(const Ticket& c);
 	Ticket& operator=(const Ticket& c);
@@ -31,7 +36,7 @@ public:
 	Ticket& operator--();
 	Ticket operator--(int);
 	static int getticketsSold();
-	const int getid();
+	int getid();
 	char* getguestName();
 	int getticketPrice();
 	int* getseatNumbers();

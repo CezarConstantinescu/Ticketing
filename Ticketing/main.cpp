@@ -47,16 +47,17 @@ int main()
 	// Testing Event class methods
 	Event e;
 	cout << e.getZone() << endl;
-	Event e1(100, 10, "Serbare", Event::Zone::VIP);
+	Event e1(100, 1000, "serbare", Event::Zone::VIP);
 	cout << e1.getZone() << endl;
 	Event copie2(e1);
+	cout << copie2.getEntryFee() << endl;
 	cout << copie2.getZone() <<endl <<endl;
 	cout << e.getId() << endl << e1.getId() << endl << copie2.getId() << endl << endl;
 
 	// Testing Guest class methods
 	
 	Guest g;
-	Guest g1("Mihai", 5, b);
+	Guest g1("Mihai", 4, b);
 	Guest g2(g1);
 
 	cout << g2.getgroupSize() << endl;
@@ -72,4 +73,9 @@ int main()
 	for(int i = 0; i<3; i++)
 		cout << *(g2.getseatNumbers() + i) << " ";
 	cout << endl << endl;
+	
+	// Creating a Ticket based on an Event and a Guest
+
+	Ticket t(e1,g1);
+	cout << t;
 }

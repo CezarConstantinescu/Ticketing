@@ -18,7 +18,7 @@ Ticket::Ticket()
 
 	ticketsSold++;
 }
-Ticket::Ticket(const int id,
+Ticket::Ticket(int id,
 	int ticketPrice,
 	const char* guestName,
 	string eventName,
@@ -42,6 +42,27 @@ Ticket::Ticket(const int id,
 	}
 
 	ticketsSold++;
+}
+Ticket::Ticket(Event e, Guest g)
+	:id(id), ticketPrice(0), guestName(nullptr), eventName(""), numberOfSeats(0), seatNumbers(nullptr)
+{
+	ticketsSold++;
+	this->id = e.getId() + ticketsSold;
+
+	this->ticketPrice = e.getEntryFee();
+
+	this->guestName = new char[strlen(g.getguestName()) + 1];
+	strcpy(this->guestName, g.getguestName());
+
+	this->eventName = e.getEventName();
+
+	this->numberOfSeats = g.getgroupSize();
+
+	this->seatNumbers = new int[this->numberOfSeats];
+	for (int i = 0; i < this->numberOfSeats; i++)
+	{
+		this->seatNumbers[i] = g.getseatNumbers()[i];
+	}
 }
 Ticket::~Ticket()
 {
@@ -146,7 +167,7 @@ Ticket Ticket::operator--(int)
 
 int Ticket::getticketsSold() { return ticketsSold; }
 
-const int Ticket::getid() { return this->id; }
+int Ticket::getid() { return this->id; }
 char* Ticket::getguestName() { return this->guestName; }
 int Ticket::getticketPrice() { return this->ticketPrice; }
 int* Ticket::getseatNumbers() { return this->seatNumbers; }
@@ -205,17 +226,18 @@ void Ticket::setseatNumbers(int numberOfSeats, int* seatNumbers)
 
 ostream& operator<<(ostream& out, const Ticket& c)
 {
-	out << c.id << endl
-		<< c.ticketPrice << endl
-		<< c.guestName << endl
-		<< c.eventName << endl
-		<< c.numberOfSeats << endl;
-
+	out <<"ID: "<<  c.id << endl
+		<< "Price: "<< c.ticketPrice << "$" << endl
+		<< "Guest name: " << c.guestName << endl
+		<< "Event : " << c.eventName << endl
+		<< "Number of seats: " << c.numberOfSeats << endl
+		<< "Seats: ";
+	if (c.numberOfSeats == 0) out << "none";
 	for (int i = 0; i < c.numberOfSeats; i++)
 	{
 		out << c.seatNumbers[i] << " ";
 	}
-	out << endl;
+	out << endl << endl;
 	return out;
 }
 

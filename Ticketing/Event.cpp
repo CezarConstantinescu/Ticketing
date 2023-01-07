@@ -6,23 +6,23 @@
 #include "Event.h"
 
 Event::Event()
-	:venueSeats(0), venueRows(0), eventName(""), zone(Zone::LAWN)
+	:venueSeats(0), entryFee(0), eventName(""), zone(Zone::LAWN)
 {
 	venueSeats = 0;
-	venueRows = 0;
+	entryFee = 0;
 	eventName = "";
 	zone = Zone::LAWN;
 	id = generateId();
 }
 
 Event::Event(int venueSeats,
-	int venueRows,
+	int entryFee,
 	std::string eventName,
 	Zone zone)
-	:venueSeats(0), venueRows(0), eventName(""), zone(Zone::LAWN)
+	:venueSeats(0), entryFee(0), eventName(""), zone(Zone::LAWN)
 {
 	this->venueSeats = venueSeats;
-	this->venueRows = venueRows;
+	this->entryFee = entryFee;
 	this->eventName = eventName;
 	this->zone = zone;
 	this->id = generateId();
@@ -35,7 +35,7 @@ Event::~Event()
 Event::Event(const Event& c)
 {
 	this->venueSeats = c.venueSeats;
-	this->venueRows = c.venueRows;
+	this->entryFee = c.entryFee;
 	this->eventName = c.eventName;
 	this->zone = c.zone;
 	this->id = c.id;
@@ -56,7 +56,8 @@ std::string Event::getZone() {
 }
 
 int Event::getId() { return this->id; }
-
+int Event::getEntryFee() { return this->entryFee; }
+string Event::getEventName() { return this->eventName; }
 int Event::generateId()
 {
 	srand(chrono::duration_cast<chrono::nanoseconds>(

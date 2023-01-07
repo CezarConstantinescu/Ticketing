@@ -8,7 +8,7 @@ class Event
 private:
 	int id;
 	int venueSeats;
-	int venueRows;
+	int entryFee;
 	std::string eventName;
 public:
 enum class Zone {
@@ -20,14 +20,16 @@ enum class Zone {
 	Zone zone;
 	Event();
 	Event(int venueSeats,
-		int venueRows,
+		int entryFee,
 		std::string eventName,
 		Zone zone);
 	~Event();
 	Event(const Event& c);
 	std::string getZone();
 	int getId();
+	int getEntryFee();
 	int generateId();
+	string getEventName();
 };
 
 #endif
