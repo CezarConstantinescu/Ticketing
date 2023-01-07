@@ -6,6 +6,7 @@ using namespace std;
 class Event
 {
 private:
+	int id;
 	int venueSeats;
 	int venueRows;
 	std::string eventName;
@@ -25,6 +26,8 @@ enum class Zone {
 	~Event();
 	Event(const Event& c);
 	std::string getZone();
+	int getId();
+	int generateId();
 };
 
 #endif

@@ -12,10 +12,10 @@ int main()
 	Ticket c;
 	cout << c << endl;
 
-	Ticket c1(100, 4, "george", "000", 3, a);
+	Ticket c1(100, 4, "George", "spectacol", 3, a);
 	cout << c1 << endl;
 
-	Ticket c2(200, 4, "alex", "002", 4, b);
+	Ticket c2(200, 4, "Alex", "concert", 4, b);
 	cout << c2 << endl;
 	cout << c2.getguestName() << endl;
 
@@ -51,6 +51,7 @@ int main()
 	cout << e1.getZone() << endl;
 	Event copie2(e1);
 	cout << copie2.getZone() <<endl <<endl;
+	cout << e.getId() << endl << e1.getId() << endl << copie2.getId() << endl << endl;
 
 	// Testing Guest class methods
 	

@@ -1,5 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
+#include <random>
+#include <ctime>
+#include <chrono>
 #include "Event.h"
 
 Event::Event()
@@ -9,6 +12,7 @@ Event::Event()
 	venueRows = 0;
 	eventName = "";
 	zone = Zone::LAWN;
+	id = generateId();
 }
 
 Event::Event(int venueSeats,
@@ -21,6 +25,7 @@ Event::Event(int venueSeats,
 	this->venueRows = venueRows;
 	this->eventName = eventName;
 	this->zone = zone;
+	this->id = generateId();
 }
 
 Event::~Event()
@@ -33,6 +38,7 @@ Event::Event(const Event& c)
 	this->venueRows = c.venueRows;
 	this->eventName = c.eventName;
 	this->zone = c.zone;
+	this->id = c.id;
 }
 
 std::string Event::getZone() {
@@ -44,6 +50,19 @@ std::string Event::getZone() {
         case Zone::TRIBUNE:
           return "TRIBUNE";
 		case Zone::BOXES:
-        return "BOXES";
-    }
+		  return "BOXES";
+		default: return "LAWN";
+      }
+}
+
+int Event::getId() { return this->id; }
+
+int Event::generateId()
+{
+	srand(chrono::duration_cast<chrono::nanoseconds>(
+		chrono::system_clock::now().time_since_epoch())
+		.count());
+	int random_number = rand() % 1000000 + 1;
+	auto now = time(nullptr);
+	return (now) + (random_number);
 }
