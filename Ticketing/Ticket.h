@@ -40,6 +40,7 @@ public:
 	char* getguestName();
 	int getticketPrice();
 	int* getseatNumbers();
+	void seteventName(string eventName);
 	void setticketPrice(int ticketPrice);
 	void setguestName(const char* guestName);
 	void setseatNumbers(int numberOfSeats, int* seatNumbers);

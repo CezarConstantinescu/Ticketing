@@ -172,6 +172,18 @@ char* Ticket::getguestName() { return this->guestName; }
 int Ticket::getticketPrice() { return this->ticketPrice; }
 int* Ticket::getseatNumbers() { return this->seatNumbers; }
 
+void Ticket::seteventName(string eventName)
+{
+	if (eventName != "")
+	{
+		this->eventName = eventName;
+	}
+	else
+	{
+		cout << "\nInput invalid" << endl << endl;
+	}
+}
+
 void Ticket::setticketPrice(int ticketPrice)
 {
 	if (ticketPrice > 0)
