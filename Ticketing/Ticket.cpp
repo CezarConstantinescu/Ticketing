@@ -170,6 +170,8 @@ int Ticket::getticketsSold() { return ticketsSold; }
 int Ticket::getid() { return this->id; }
 char* Ticket::getguestName() { return this->guestName; }
 int Ticket::getticketPrice() { return this->ticketPrice; }
+string Ticket::geteventName(){ return this->eventName; }
+int Ticket::getnumberOfSeats() { return this->numberOfSeats; }
 int* Ticket::getseatNumbers() { return this->seatNumbers; }
 
 void Ticket::seteventName(string eventName)

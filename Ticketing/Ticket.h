@@ -39,6 +39,8 @@ public:
 	int getid();
 	char* getguestName();
 	int getticketPrice();
+	string geteventName();
+	int getnumberOfSeats();
 	int* getseatNumbers();
 	void seteventName(string eventName);
 	void setticketPrice(int ticketPrice);
